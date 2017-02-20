@@ -1,0 +1,61 @@
+package com.capgemini.kycapp.api;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import org.junit.Test;
+
+import com.capgemini.api.KYCApi;
+import com.capgemini.model.KYC;
+
+public class KYCApiTest {
+	
+	   KYCApi kycApi=new KYCApi(); 
+	   KYC kycUser=new KYC();
+	   
+	   
+	   @Test
+	   public void testAddUser() {	 
+		   kycUser.setUser_id(1111);
+		   kycUser.setName("Rakesh R");
+		   Calendar cal = Calendar.getInstance();
+			 Date today = cal.getTime();
+			 cal.add(Calendar.YEAR, 2); 
+			 Date expiry_date = cal.getTime();
+			 kycUser.setRegistration_date(today);
+			 kycUser.setExpiry_date(expiry_date);
+		     assertEquals(kycUser,kycApi.addUser(kycUser));
+	   }
+	   
+	   @Test
+	   public void testSearchUser(){
+		   kycUser.setUser_id(1111);
+		   kycUser.setName("Rakesh R");
+		   Calendar cal = Calendar.getInstance();
+			 Date today = cal.getTime();
+			 cal.add(Calendar.YEAR, 2); 
+			 Date expiry_date = cal.getTime();
+			 kycUser.setRegistration_date(today);
+			 kycUser.setExpiry_date(expiry_date);
+		   //assertEquals(kycUser,kycApi.searchUser(1111));
+			 assertTrue("true", kycApi.searchUser(1111)) ;
+		  }
+	   
+	   @Test
+	   public void testIsValidUser(){
+		   
+		   kycUser.setUser_id(1111);
+		   kycUser.setName("Rakesh R");
+		   Calendar cal = Calendar.getInstance();
+			 Date today = cal.getTime();
+			 cal.add(Calendar.YEAR, 2); 
+			 Date expiry_date = cal.getTime();
+			 kycUser.setRegistration_date(today);
+			 kycUser.setExpiry_date(expiry_date);
+		   //assertEquals(kycUser,kycApi.searchUser(1111));
+			 assertTrue("true", kycApi.isValidUser(new Date())) ;
+		  }
+}
