@@ -1,0 +1,49 @@
+package com.capgemini.kycapp.api;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import com.capgemini.kycapp.model.UserKycInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+@RequestMapping("/api")
+public class KYCController {
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	Integer nodePort = 10005;
+	private String apiBaseURL = "http://localhost:" + nodePort + "/api/example/";
+
+	@RequestMapping(value = "/peers", method = RequestMethod.GET, produces = "application/json")
+	public String getCheck() throws Exception {
+
+		return restTemplate.getForObject(apiBaseURL + "peers", String.class);
+
+	}
+
+	@RequestMapping(value = "/CreateKycDoc", method = RequestMethod.PUT, produces = "application/json")
+	public void submitDocument(@RequestBody UserKycInfo userKycInfo) throws Exception {
+
+		String createPoEndpoint = apiBaseURL + "NodeB" + "/CreateKycDoc";
+		restTemplate.put(createPoEndpoint, userKycInfo);
+
+	}
+
+	public KYCController() {
+		System.out.println("Controller called");
+	}
+
+	
+
+}

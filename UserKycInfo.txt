@@ -1,0 +1,88 @@
+package com.capgemini.kycapp.model;
+
+
+import java.util.Date;
+
+/**
+ * A simple class representing a purchase order.
+ */
+public class UserKycInfo
+{
+    private int userID;
+    private int aadharNumber;
+    private int bankID;
+    private String userName;
+    private String bankName;
+    private Date kycDate;
+    private Date kYCExpiryDate;
+
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public int getAadharNumber() {
+        return aadharNumber;
+    }
+
+    public void setAadharNumber(int aadharNumber) {
+        this.aadharNumber = aadharNumber;
+    }
+
+    public int getBankID() {
+        return bankID;
+    }
+
+    public void setBankID(int bankID) {
+        this.bankID = bankID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public Date getKycDate() {
+        return kycDate;
+    }
+
+    public void setKycDate(Date kycDate) {
+        this.kycDate = kycDate;
+    }
+
+    public Date getkYCExpiryDate() {
+        return kYCExpiryDate;
+    }
+
+    public void setkYCExpiryDate(Date kYCExpiryDate) {
+        this.kYCExpiryDate = kYCExpiryDate;
+    }
+
+    @Override
+    public String toString() {
+        return "UserKycInfo{" +
+                "userID=" + userID +
+                ", aadharNumber=" + aadharNumber +
+                ", bankID=" + bankID +
+                ", userName='" + userName + '\'' +
+                ", bankName='" + bankName + '\'' +
+                ", kycDate=" + kycDate +
+                ", kYCExpiryDate=" + kYCExpiryDate +
+                '}';
+    }
+}
